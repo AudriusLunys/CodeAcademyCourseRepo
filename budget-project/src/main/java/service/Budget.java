@@ -5,6 +5,7 @@ import model.IncomeRecord;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
@@ -19,22 +20,23 @@ public class Budget {
 
 
     public IncomeRecord addIncomeRecord() {
+
         IncomeRecord incomeRecord = new IncomeRecord();
-        printService.printRequestIncomeAmount();
+
+        printService.print("Income date : format yyyy-MM-dd");
+        String date = scanner.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(date, formatter);
+        incomeRecord.setIncomeDate(localDate);
+
+        printService.print("income amount");
         incomeRecord.setIncomeAmount(scanner.nextDouble());
         scanner.nextLine();
 
-        //printService.printRequestIncomeDate();
-        // String date=scanner.nextLine();
-        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        // LocalDate localDate = LocalDate.parse(date,formatter);
-        // incomeRecord.setIncomeDate(localDate);
-
-        printService.printRequestIncomeCategory();
-
+        printService.print("income category");
         incomeRecord.setIncomeCategory(scanner.nextLine());
 
-        printService.printIsTransfer();
+        printService.print("is it a bank transfer ? Yes input 1 / No input 0");
         int input = scanner.nextInt();
         if (input == 1) {
             incomeRecord.setBankTransfer(true);
@@ -42,7 +44,7 @@ public class Budget {
             incomeRecord.setBankTransfer(false);
         }
         scanner.nextLine();
-        printService.printAddInfo();
+        printService.print("please add short description of income");
         incomeRecord.setIncomeDescription(scanner.nextLine());
 
         return incomeRecord;
@@ -57,10 +59,58 @@ public class Budget {
         return income;
     }
 
-    public IncomeRecord getIncomeRecord(IncomeRecord[] income){
-        printService.requestIndexInput();
-       int recordIndex = scanner.nextInt();
-       IncomeRecord record = income[recordIndex];
-       return record;
+    public IncomeRecord getIncomeRecordByIndex(IncomeRecord[] income) {
+        printService.print("please input record index");
+        int recordIndex = scanner.nextInt();
+        IncomeRecord record = income[recordIndex];
+        return record;
+    }
+
+    public ExpensesRecord addExpenseRecord() {
+        ExpensesRecord expensesRecord = new ExpensesRecord();
+
+        printService.print("Income date : format yyyy-MM-dd HH:mm");
+        String dateAndTime = scanner.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime localDateTime = LocalDateTime.parse(dateAndTime, formatter);
+        expensesRecord.setExpenseDateAndTime(localDateTime);
+
+        printService.print("expense amount");
+        expensesRecord.setExpenseAmount(scanner.nextDouble());
+        scanner.nextLine();
+
+        printService.print("expenses category");
+        expensesRecord.setExpenseCategory(scanner.nextLine());
+
+        printService.print("paument method ? Bank transfer input 1 / Cash- input 0");
+        int input = scanner.nextInt();
+        if (input == 1) {
+            expensesRecord.setMethodOfPayment("bank transfer");
+        } else {
+            expensesRecord.setMethodOfPayment("cash");
+        }
+        scanner.nextLine();
+
+        printService.print("please add short description of expense");
+        expensesRecord.setExpenseDescription(scanner.nextLine());
+
+        return expensesRecord;
+    }
+
+    public ExpensesRecord[] addRecordToExpensesList(ExpensesRecord expensesRecord) {
+        for (int i = 0; i <= expenses.length; i++) {
+            if (i == 0) {
+               expenses[i] = expensesRecord;
+            }
+        }
+        return expenses;
+    }
+
+    public ExpensesRecord getExpensesRecordByIndex(ExpensesRecord[] expenses) {
+        printService.print("please input record index");
+        int recordIndex = scanner.nextInt();
+        ExpensesRecord record = expenses[recordIndex];
+        return record;
     }
 }
+

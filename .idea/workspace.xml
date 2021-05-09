@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="416d3b7d-9858-47bd-9a85-1bf3f22774c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/budget-project/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/budget-project/src/main/java/model/ExpensesRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/budget-project/src/main/java/service/Budget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/budget-project/src/main/java/service/PrintService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/budget-project/src/main/java/model/IncomeRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/budget-project/src/main/java/model/IncomeRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/budget-project/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/budget-project/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/budget-project/src/main/java/service/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/budget-project/src/main/java/service/Budget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/budget-project/src/main/java/service/PrintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/budget-project/src/main/java/service/PrintService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../UdemySpringCourse" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CodeAcademyCollection" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -109,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620143610614</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="income record functionality started">
+      <created>1620154195824</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620154195824</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,11 +140,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test" />
     <MESSAGE value="budget project branch created" />
-    <option name="LAST_COMMIT_MESSAGE" value="budget project branch created" />
+    <MESSAGE value="income record functionality started" />
+    <option name="LAST_COMMIT_MESSAGE" value="income record functionality started" />
   </component>
 </project>

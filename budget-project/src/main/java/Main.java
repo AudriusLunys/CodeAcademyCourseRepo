@@ -1,3 +1,4 @@
+import model.ExpensesRecord;
 import model.IncomeRecord;
 import service.Budget;
 
@@ -10,28 +11,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-      Budget budget = new Budget();
-      IncomeRecord i1 = budget.addIncomeRecord();
-      IncomeRecord[] ir =  budget.addRecordToIncomeList(i1);
-        System.out.println(budget.getIncomeRecord(ir));
+        Budget budget = new Budget();
 
+        IncomeRecord i1 = budget.addIncomeRecord();
+        IncomeRecord[] ir = budget.addRecordToIncomeList(i1);
+        System.out.println(budget.getIncomeRecordByIndex(ir));
 
-
-
-
-
-       //Scanner scanner = new Scanner(System.in);
-      //  IncomeRecord incomeRecord = new IncomeRecord();
-      //  String date=scanner.nextLine();
-      //  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-      //  LocalDate localDate = LocalDate.parse(date,formatter);
-     //   incomeRecord.setIncomeDate(localDate);
-
-      //  System.out.println(incomeRecord.toString());
-
-
-
-
-
+        ExpensesRecord e1 = budget.addExpenseRecord();
+        ExpensesRecord[] expList = budget.addRecordToExpensesList(e1);
+        System.out.println(budget.getExpensesRecordByIndex(expList));
     }
 }
