@@ -13,3 +13,5 @@ f
 0budget-project/src/main/java/service/Budget.java,a\7\a711ce21af9699b70e9c114913ebbba1d17283c6
 V
 &budget-project/src/main/java/Main.java,7\f\7ff0306251534baaac544a76e2c6481ab59c96f6
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0

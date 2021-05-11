@@ -2,13 +2,9 @@ package service;
 
 import model.ExpensesRecord;
 import model.IncomeRecord;
-
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Budget {
@@ -59,7 +55,7 @@ public class Budget {
         return income;
     }
 
-    public IncomeRecord getIncomeRecordByIndex(IncomeRecord[] income) {
+    public IncomeRecord getIncomeRecordByIndex() {
         printService.print("please input record index");
         int recordIndex = scanner.nextInt();
         IncomeRecord record = income[recordIndex];
@@ -69,7 +65,7 @@ public class Budget {
     public ExpensesRecord addExpenseRecord() {
         ExpensesRecord expensesRecord = new ExpensesRecord();
 
-        printService.print("Income date : format yyyy-MM-dd HH:mm");
+        printService.print("expense date : format yyyy-MM-dd HH:mm");
         String dateAndTime = scanner.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime localDateTime = LocalDateTime.parse(dateAndTime, formatter);
@@ -82,7 +78,7 @@ public class Budget {
         printService.print("expenses category");
         expensesRecord.setExpenseCategory(scanner.nextLine());
 
-        printService.print("paument method ? Bank transfer input 1 / Cash- input 0");
+        printService.print("payment method ? Bank transfer input 1 / Cash- input 0");
         int input = scanner.nextInt();
         if (input == 1) {
             expensesRecord.setMethodOfPayment("bank transfer");
@@ -106,7 +102,7 @@ public class Budget {
         return expenses;
     }
 
-    public ExpensesRecord getExpensesRecordByIndex(ExpensesRecord[] expenses) {
+    public ExpensesRecord getExpensesRecordByIndex() {
         printService.print("please input record index");
         int recordIndex = scanner.nextInt();
         ExpensesRecord record = expenses[recordIndex];
