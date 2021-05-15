@@ -4,7 +4,6 @@ import model.ExpensesRecord;
 import model.IncomeRecord;
 import service.Budget;
 import service.PrintService;
-
 import java.util.Scanner;
 
 public class Menu {
