@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="416d3b7d-9858-47bd-9a85-1bf3f22774c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/budget-project/src/main/java/view/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/budget-project/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/budget-project/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/budget-project/src/main/java/service/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/budget-project/src/main/java/service/Budget.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620540261844</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="pagrindinis funkcionalumas pagal uzduoti padarytas:&#10;TODO:&#10;Perdaug pasikartojancio kodo , reikia optimizuoti">
+      <created>1620746403281</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620746403281</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +159,7 @@
     <MESSAGE value="budget project branch created" />
     <MESSAGE value="income record functionality started" />
     <MESSAGE value="pagrindinis funkcionalumas pagal uzduoti padarytas:&#10;TODO:&#10;Perdaug pasikartojancio kodo in BUDGET. reikia optimizuoti&#10;&#10;padaryti interaktyvu meniu" />
-    <option name="LAST_COMMIT_MESSAGE" value="pagrindinis funkcionalumas pagal uzduoti padarytas:&#10;TODO:&#10;Perdaug pasikartojancio kodo in BUDGET. reikia optimizuoti&#10;&#10;padaryti interaktyvu meniu" />
+    <MESSAGE value="pagrindinis funkcionalumas pagal uzduoti padarytas:&#10;TODO:&#10;Perdaug pasikartojancio kodo , reikia optimizuoti" />
+    <option name="LAST_COMMIT_MESSAGE" value="pagrindinis funkcionalumas pagal uzduoti padarytas:&#10;TODO:&#10;Perdaug pasikartojancio kodo , reikia optimizuoti" />
   </component>
 </project>

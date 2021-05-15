@@ -15,3 +15,5 @@ V
 &budget-project/src/main/java/Main.java,7\f\7ff0306251534baaac544a76e2c6481ab59c96f6
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+[
++budget-project/src/main/java/view/Menu.java,8\e\8e7735b12f2a4684874685fbe39a2357c65a4be2
