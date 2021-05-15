@@ -18,8 +18,11 @@ public class Menu {
         printService.print("**** Budget App Menu ***" + '\n' +
                 "1 - add income" + '\n' +
                 "2 - add expense" + '\n' +
-                "3 - get income record by id" + '\n' +
-                "4 - get expense record by id" + '\n' +
+                "3 - get all income records" + '\n' +
+                "4 - get all expense records" + '\n' +
+                "5 - delete income record by ID" + '\n' +
+                "6 - delete expense record by ID" + '\n' +
+                "7 - get balance" + '\n' +
                 "0 - exit program " + '\n' +
                 "please enter your choice "
         );
@@ -44,14 +47,28 @@ public class Menu {
                     break;
 
                 case 3:
-                    System.out.println(budget.getIncomeRecordByIndex());
-                    scanner.nextLine();
-                    break;
-                case 4:
-                    System.out.println(budget.getExpensesRecordByIndex());
-                    scanner.nextLine();
+                    budget.printIncomeList();
                     break;
 
+                case 4:
+                    budget.printExpensesList();
+                    break;
+
+                case 5:
+                    budget.deleteIncomeRecordById();
+                    break;
+
+                case 6:
+                    budget.deleteExpensesRecordById();
+                    break;
+
+                case 7:
+                     printService.print("current balance: "+ budget.checkBalance() +" of money");
+                    break;
+
+                default:
+                    System.out.println("something went wrong");
+                    break;
             }
         } while (userChoice != 0);
 
