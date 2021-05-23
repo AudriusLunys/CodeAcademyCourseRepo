@@ -1,32 +1,19 @@
 package model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class IncomeRecord {
+public class IncomeRecord extends Record  {
 
-    private Double incomeAmount;
-    private LocalDate incomeDate;
     private String incomeCategory;
-    private boolean bankTransfer;
-    private String incomeDescription;
 
     public IncomeRecord() {
+
     }
 
-    public Double getIncomeAmount() {
-        return incomeAmount;
-    }
-
-    public void setIncomeAmount(Double incomeAmount) {
-        this.incomeAmount = incomeAmount;
-    }
-
-    public LocalDate getIncomeDate() {
-        return incomeDate;
-    }
-
-    public void setIncomeDate(LocalDate incomeDate) {
-        this.incomeDate = incomeDate;
+       public IncomeRecord(BigDecimal amount, LocalDate recordDate, String recordDescription, String incomeCategory) {
+        super(amount, recordDate, recordDescription);
+        this.incomeCategory = incomeCategory;
     }
 
     public String getIncomeCategory() {
@@ -37,30 +24,12 @@ public class IncomeRecord {
         this.incomeCategory = incomeCategory;
     }
 
-    public boolean isBankTransfer() {
-        return bankTransfer;
-    }
-
-    public void setBankTransfer(boolean bankTransfer) {
-        this.bankTransfer = bankTransfer;
-    }
-
-    public String getIncomeDescription() {
-        return incomeDescription;
-    }
-
-    public void setIncomeDescription(String incomeDescription) {
-        this.incomeDescription = incomeDescription;
-    }
-
     @Override
     public String toString() {
         return "IncomeRecord{" +
-                "amount=" + incomeAmount +
-                ", date=" + incomeDate +
-                ", category='" + incomeCategory + '\'' +
-                ", bankTransfer=" + bankTransfer +
-                ", additionalInfo='" + incomeDescription + '\'' +
-                '}';
+                "incomeCategory='" + incomeCategory + '\'' +
+                "} " + super.toString();
     }
+
+
 }

@@ -2,9 +2,11 @@ package service;
 
 import model.ExpensesRecord;
 import model.IncomeRecord;
+import model.Record;
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,124 +14,166 @@ import java.util.Scanner;
 public class Budget {
     private PrintService printService = new PrintService();
     private Scanner scanner = new Scanner(System.in);
+    private final String MENU_ENTRY = " 1 -> EDIT 2 ->NEXT";
+    private Map<Integer, Record> recordList = new HashMap<>();
+    private int idInList = 1;
 
-    private Map<Integer, IncomeRecord> income = new HashMap<>();
-    private Map<Integer, ExpensesRecord> expenses= new HashMap<>();
+    public Record createRecord() {
+        printService.print("Income record 1 | Expense record 2");
+        int choice = scanner.nextInt();
 
-    private int incomeId=1;
-    private int expensesId=1;
+        printService.print(" Ammout of money ");
+        BigDecimal sumOfMoney = scanner.nextBigDecimal();
+        scanner.nextLine();
 
-
-    public IncomeRecord addIncomeRecord() {
-
-        IncomeRecord incomeRecord = new IncomeRecord();
-
-        printService.print("Income date : format yyyy-MM-dd");
+        printService.print("date : format yyyy-MM-dd");
         String date = scanner.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(date, formatter);
-        incomeRecord.setIncomeDate(localDate);
 
-        printService.print("income amount");
-        incomeRecord.setIncomeAmount(scanner.nextDouble());
-        scanner.nextLine();
+        printService.print("description");
+        String description = scanner.nextLine();
 
-        printService.print("income category");
-        incomeRecord.setIncomeCategory(scanner.nextLine());
+        printService.print(" Category");
+        String category = scanner.nextLine();
 
-        printService.print("is it a bank transfer ? Yes input 1 / No input 0");
-        int input = scanner.nextInt();
-        if (input == 1) {
-            incomeRecord.setBankTransfer(true);
+        Record record = null;
+        if (choice == 1) {
+            record = new IncomeRecord(sumOfMoney, localDate, description, category);
+
+        } else if (choice == 2) {
+            record = new ExpensesRecord(sumOfMoney, localDate, description, category);
         } else {
-            incomeRecord.setBankTransfer(false);
+            printService.print("input error");
         }
-        scanner.nextLine();
-        printService.print("please add short description of income");
-        incomeRecord.setIncomeDescription(scanner.nextLine());
 
-        return incomeRecord;
+        return record;
+
     }
 
-    public Map<Integer, IncomeRecord> addRecordToIncomeList(IncomeRecord incomeRecord) {
-        income.put(incomeId, incomeRecord);
-        incomeId++;
-        return income;
+    public void addRecord(Record record) {
+        recordList.put(idInList, record);
+        idInList++;
     }
 
-    public void printIncomeList() {
-        for (Map.Entry<Integer, IncomeRecord> incomeRecordEntry : income.entrySet()) {
-           printService.print("" + incomeRecordEntry);
+    public ArrayList<IncomeRecord> getAllIncomeRecords() {
+        ArrayList<IncomeRecord> incomeRecords = new ArrayList<>();
+        for (Record value : recordList.values()) {
+            if(value instanceof  IncomeRecord){
+                incomeRecords.add((IncomeRecord) value);
+            }
         }
+        return incomeRecords;
     }
 
-    public void deleteIncomeRecordById(){
-      printService.print("please input ID of record to delete");
-      int idToDelete= scanner.nextInt();
-        income.remove(idToDelete);
-    }
-
-
-    public ExpensesRecord addExpenseRecord() {
-        ExpensesRecord expensesRecord = new ExpensesRecord();
-
-        printService.print("expense date : format yyyy-MM-dd HH:mm");
-        String dateAndTime = scanner.nextLine();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime localDateTime = LocalDateTime.parse(dateAndTime, formatter);
-        expensesRecord.setExpenseDateAndTime(localDateTime);
-
-        printService.print("expense amount");
-        expensesRecord.setExpenseAmount(scanner.nextDouble());
-        scanner.nextLine();
-
-        printService.print("expenses category");
-        expensesRecord.setExpenseCategory(scanner.nextLine());
-
-        printService.print("payment method ? Bank transfer input 1 / Cash- input 0");
-        int input = scanner.nextInt();
-        if (input == 1) {
-            expensesRecord.setMethodOfPayment("bank transfer");
-        } else {
-            expensesRecord.setMethodOfPayment("cash");
+    public ArrayList<ExpensesRecord> getAllExpencesRecords() {
+        ArrayList<ExpensesRecord> expensesRecords = new ArrayList<>();
+        for (Record value : recordList.values()) {
+            if (value instanceof ExpensesRecord) {
+                expensesRecords.add((ExpensesRecord) value);
+            }
         }
-        scanner.nextLine();
-
-        printService.print("please add short description of expense");
-        expensesRecord.setExpenseDescription(scanner.nextLine());
-
-        return expensesRecord;
+        return expensesRecords;
     }
 
-    public Map<Integer, ExpensesRecord> addRecordToExpensesList(ExpensesRecord expensesRecord) {
-        expenses.put(expensesId, expensesRecord);
-        expensesId++;
-        return expenses;
-    }
-
-    public void printExpensesList() {
-        for (Map.Entry<Integer, ExpensesRecord> expensesRecordEntry : expenses.entrySet()) {
-            printService.print("" + expensesRecordEntry);
+    public void showAllRecords() {
+        printService.print("** this is list of all awailable records **");
+        for (Map.Entry<Integer, Record> entry : recordList.entrySet()) {
+            printService.print("" + entry);
         }
     }
 
-    public void deleteExpensesRecordById(){
+    public void editSelectedRecord() {
+        printService.print("please Enter record ID");
+        int id = scanner.nextInt();
+        int choice = 0;
+        for (Map.Entry<Integer, Record> recordEntry : recordList.entrySet()) {
+            if (recordEntry.getKey() == id) {
+
+                printService.print("Ammout is :" + recordEntry.getValue().getAmount());
+                printService.print(MENU_ENTRY);
+                choice = scanner.nextInt();
+                if (choice == 1) {
+                    printService.print(" enter new ammount");
+                    recordEntry.getValue().setAmount(scanner.nextBigDecimal());
+                }
+                printService.print("Record date is :" + recordEntry.getValue().getRecordDate());
+                printService.print(MENU_ENTRY);
+                choice = scanner.nextInt();
+                scanner.nextLine();
+                if (choice == 1) {
+                    printService.print(" enter new date : format yyyy-MM-dd");
+                    String date = scanner.nextLine();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate localDate = LocalDate.parse(date, formatter);
+                    recordEntry.getValue().setRecordDate(localDate);
+                }
+                printService.print("Record description is :" + recordEntry.getValue().getRecordDescription());
+                printService.print(MENU_ENTRY);
+                choice = scanner.nextInt();
+                scanner.nextLine();
+                if (choice == 1) {
+                    printService.print(" enter new description");
+                    recordEntry.getValue().setRecordDescription(scanner.nextLine());
+                }
+
+
+                if (recordEntry.getValue() instanceof IncomeRecord) {
+                    printService.print("Income category is: " + ((IncomeRecord) recordEntry.getValue()).getIncomeCategory());
+                }
+                if (recordEntry.getValue() instanceof ExpensesRecord) {
+                    printService.print("Expenses category is: " + ((ExpensesRecord) recordEntry.getValue()).getExpenseCategory());
+                }
+
+                printService.print(MENU_ENTRY);
+                choice = scanner.nextInt();
+                scanner.nextLine();
+                if (choice == 1) {
+                    printService.print(" enter new category");
+                    String category = scanner.nextLine();
+                    if (recordEntry.getValue() instanceof IncomeRecord) {
+                        ((IncomeRecord) recordEntry.getValue()).setIncomeCategory(category);
+                    } else if (recordEntry.getValue() instanceof ExpensesRecord) {
+                        ((ExpensesRecord) recordEntry.getValue()).setExpenseCategory(category);
+                    }
+
+                }
+                printService.print("edited record :" + recordEntry.getValue());
+
+            }
+        }
+
+    }
+
+    public void deleteRecordByID() {
         printService.print("please input ID of record to delete");
-        int idToDelete= scanner.nextInt();
-        expenses.remove(idToDelete);
+        int idToDelete = scanner.nextInt();
+        recordList.remove(idToDelete);
     }
 
-    public Double checkBalance(){
-        Double sumOfIncome = 0.0;
-        for (IncomeRecord incomeRecord : income.values()) {
-            sumOfIncome += incomeRecord.getIncomeAmount();
+    public BigDecimal checkBalance() {
+        BigDecimal sumOfIncome = new BigDecimal(0);
+        BigDecimal sumOfExpenses =new BigDecimal(0);
+        for (Record record : recordList.values()) {
+            if (record instanceof IncomeRecord) {
+                BigDecimal amount = record.getAmount();
+                sumOfIncome = sumOfIncome.add(amount);
+            }
+            if (record instanceof ExpensesRecord) {
+                BigDecimal amount = record.getAmount();
+                sumOfExpenses = sumOfExpenses.add(amount);
+            }
         }
-        Double sumOfExpenses = 0.0;
-        for (ExpensesRecord expensesRecord : expenses.values()) {
-            sumOfExpenses+=expensesRecord.getExpenseAmount();
-        }
-        return sumOfIncome - sumOfExpenses;
+        return sumOfIncome.subtract(sumOfExpenses);
     }
-
 }
+
+
+
+
+
+
+
+
+
 

@@ -1,7 +1,5 @@
 package view;
-
-import model.ExpensesRecord;
-import model.IncomeRecord;
+import model.Record;
 import service.Budget;
 import service.PrintService;
 import java.util.Scanner;
@@ -15,13 +13,13 @@ public class Menu {
 
     private void displayMenu() {
         printService.print("**** Budget App Menu ***" + '\n' +
-                "1 - add income" + '\n' +
-                "2 - add expense" + '\n' +
-                "3 - get all income records" + '\n' +
-                "4 - get all expense records" + '\n' +
-                "5 - delete income record by ID" + '\n' +
-                "6 - delete expense record by ID" + '\n' +
-                "7 - get balance" + '\n' +
+                "1 - Add record" + '\n' +
+                "2 - Show all records" + '\n' +
+                "3 - Get all income records" + '\n' +
+                "4 - Get all expense records" + '\n' +
+                "5 - Edit record by ID" + '\n' +
+                "6 - Delete  record by ID" + '\n' +
+                "7 - Get balance" + '\n' +
                 "0 - exit program " + '\n' +
                 "please enter your choice "
         );
@@ -36,33 +34,32 @@ public class Menu {
 
             switch (userChoice) {
                 case 1:
-                    IncomeRecord incomeRecord = budget.addIncomeRecord();
-                    budget.addRecordToIncomeList(incomeRecord);
+                    Record record = budget.createRecord();
+                    budget.addRecord(record);
                     break;
 
                 case 2:
-                    ExpensesRecord expensesRecord = budget.addExpenseRecord();
-                    budget.addRecordToExpensesList(expensesRecord);
+                    budget.showAllRecords();
                     break;
 
                 case 3:
-                    budget.printIncomeList();
+                    printService.print("" +'\n'+budget.getAllIncomeRecords());
                     break;
 
                 case 4:
-                    budget.printExpensesList();
+                   printService.print("" +'\n' + budget.getAllExpencesRecords());
                     break;
 
                 case 5:
-                    budget.deleteIncomeRecordById();
+                    budget.editSelectedRecord();
                     break;
 
                 case 6:
-                    budget.deleteExpensesRecordById();
+                    budget.deleteRecordByID();
                     break;
 
                 case 7:
-                     printService.print("current balance: "+ budget.checkBalance() +" of money");
+                     printService.print("balance : " +budget.checkBalance());
                     break;
 
                 default:
