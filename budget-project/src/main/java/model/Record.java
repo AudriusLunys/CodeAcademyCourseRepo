@@ -1,10 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
-public class Record  {
+public class Record implements Serializable {
 
     private BigDecimal amount;
     private LocalDate recordDate;
@@ -12,7 +13,6 @@ public class Record  {
 
 
     public Record() {
-
     }
 
     public Record(BigDecimal amount, LocalDate recordDate, String recordDescription) {

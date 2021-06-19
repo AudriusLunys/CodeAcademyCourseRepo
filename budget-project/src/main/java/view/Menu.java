@@ -1,12 +1,14 @@
 package view;
 import model.Record;
-import model.exception.WrongSelectionInputException;
+import exception.WrongSelectionInputException;
 import service.Budget;
+import service.FileServiceImpl;
 import service.PrintService;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
-
+    private FileServiceImpl fileService = new FileServiceImpl();
     private PrintService printService = new PrintService();
     private Budget budget = new Budget();
     private Scanner scanner = new Scanner(System.in);
@@ -20,12 +22,13 @@ public class Menu {
                 "5 - Edit record by ID" + '\n' +
                 "6 - Delete  record by ID" + '\n' +
                 "7 - Get balance" + '\n' +
+                "8 - Write records to file" + '\n' +
                 "0 - exit program " + '\n' +
                 "please enter your choice "
         );
     }
 
-    public void run() {
+    public void run() throws IOException {
         int userChoice;
         do {
             displayMenu();
@@ -58,6 +61,9 @@ public class Menu {
                     break;
                 case 7:
                     printService.print("balance : " + budget.checkBalance());
+                    break;
+                case 8:
+                    fileService.writeDataToFile(budget.getRecords());
                     break;
                 default:
                     System.out.println("something went wrong");

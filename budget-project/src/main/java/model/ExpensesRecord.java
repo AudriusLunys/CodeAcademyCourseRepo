@@ -1,7 +1,8 @@
 package model;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-public class ExpensesRecord extends Record  {
+public class ExpensesRecord extends Record implements Serializable {
 
     private String expenseCategory;
 

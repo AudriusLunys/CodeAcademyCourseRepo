@@ -3,7 +3,7 @@ package service;
 import model.ExpensesRecord;
 import model.IncomeRecord;
 import model.Record;
-import model.exception.WrongSelectionInputException;
+import exception.WrongSelectionInputException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -173,6 +173,10 @@ public class Budget {
             }
         }
         return sumOfIncome.subtract(sumOfExpenses);
+    }
+
+    public Map<Integer, Record> getRecords (){
+        return recordList;
     }
 }
 
