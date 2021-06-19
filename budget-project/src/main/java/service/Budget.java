@@ -176,7 +176,7 @@ public class Budget {
     }
 
     public Map<Integer, Record> getRecords (){
-        return recordList;
+        return this.recordList;
     }
 }
 

@@ -23,6 +23,7 @@ public class Menu {
                 "6 - Delete  record by ID" + '\n' +
                 "7 - Get balance" + '\n' +
                 "8 - Write records to file" + '\n' +
+                "9 - Get records from file" + '\n' +
                 "0 - exit program " + '\n' +
                 "please enter your choice "
         );
@@ -64,6 +65,10 @@ public class Menu {
                     break;
                 case 8:
                     fileService.writeDataToFile(budget.getRecords());
+                    break;
+                case 9:
+                    fileService.readDataFromFile();
+                    printService.print("records read");
                     break;
                 default:
                     System.out.println("something went wrong");
